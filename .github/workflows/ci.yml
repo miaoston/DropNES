@@ -1,0 +1,35 @@
+name: DropNES CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Code Formatting
+        run: npx oxfmt src
+
+      - name: Code Linting
+        run: npx oxlint --fix src
+
+      - name: Type Checking
+        run: npx tsc --noEmit
+
+      - name: Build Project
+        run: npm run build

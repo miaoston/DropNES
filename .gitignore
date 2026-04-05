@@ -1,0 +1,32 @@
+# Dependency Directories
+node_modules/
+dist/
+dist-zip/
+
+# Log Files
+*.log
+*_output.txt
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Project-Specific Temporary/Test Files
+*.nes
+*.neo
+*.dnes
+*.zip
+!commercial_safe_demo.nes
+
+# IDE / Editor Files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment Variables
+.env
+.env.*
+
+# Agent Collective Memory
+AGENTS.md
